@@ -1,0 +1,281 @@
+/* Làm theo nguyên tắc
+1. Từ ngoài vào trong
+2. Từ trên xuống dưới
+3. Tổng quan đến chi tiết
+
+*/
+/* 
+1. Vị trí 
+2. Kích thước {width, height}
+3. Màu sắc
+4. Kiểu dáng (kiểu chữ, hình dạng)
+
+*/
+/* Reset CSS */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.text-white{
+    color: white !important;
+}
+/* HEADER CSS */
+html{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#header{
+    height: 46.5px;
+    background-color: black;
+    /* HEADER FIXED CSS */
+    /* Header đứng tĩnh ko bị mất  */
+    position: fixed;
+    top: 0; 
+    left: 0;
+    right: 0;
+    z-index: 1; /*fix lỗi khi scroll, slider ko che mất cái header*/ 
+
+
+}
+
+#nav{
+    font-size: 0;
+    display: inline-block; 
+}
+
+
+
+/* thẻ "a" là con direct của "li" con direct của "nav"  */
+/* ý nghĩa: sẽ tác động trực tiếp lên thẻ "a" cấp 1 ,
+ "a"cấp 2 ko bị ảnh hưởng */
+#nav > li > a{
+    color: #fff;   
+    text-transform: uppercase; 
+    min-width: 56px;
+}
+
+#nav li a{
+   
+    text-decoration: none;
+    /* line-height : chiều cao của chữ ở mép trên và mép dưới */
+    /* cho số đo của line-height = height of #header --> chữ căn giữa */
+    line-height: 46px;
+    padding: 0 24px ;
+    display: block;
+    font-size: 15px;
+    /* Vì giữa 2 element có khoảng cách khi hover do block
+    --> cách giải quyết là cho display : flex vào #nav  */
+}
+
+/* NAVIGATION CSS */
+#nav > li {
+    display: inline-block;
+}
+#nav  li{
+    position: relative;
+ }
+/* bỏ 3 dấu chấm ở thẻ a thứ 2 */
+
+#nav, .subnav{
+    list-style-type: none;
+}
+
+#nav .subnav{
+    min-width: 160px;
+    display: none;
+   position: absolute;
+   top: 100%; /* = 46px*/
+   left: 0;
+   background-color: #fff;
+   /* tạo bóng đổ  */
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+   
+}
+#nav .subnav a{
+    color: #000;
+    padding: 0 12px;
+    line-height: 38px;
+}
+
+/* Hiện lên tag "a" thứ 2 trong MORE  */
+#nav li:hover .subnav{
+    display: block;
+}
+
+/* Vì "#nav > li:hover > a" và "#nav .subnav:hover a" 
+có thuộc tính Css giống nhau -> viết gộp */
+#nav > li:hover > a,
+#nav .subnav li:hover a{
+    background-color: #ccc;
+    color: #000;
+}
+
+/* HEADER SEARCH CSS */
+#nav .nav-arrow-down{
+    font-size: 12px;
+}
+
+#header .search-btn{
+    float: right;
+    padding: 0 21px;  
+}
+
+#header .search-icon{
+    color: #fff;
+    font-size: 20px;
+    line-height: 46px;
+}
+
+#header .search-btn:hover{
+    /* thay đổi con trỏ chuột */
+    cursor: pointer;
+    background-color: #f44336 ;
+}
+
+
+
+/* Slider CSS */
+#slider{
+    /* để slider ở dưới header */
+    margin-top: 46px;
+    
+    padding-top: 50%; /*Meaning: 50% width của chính nó ->
+    Lấy 50% kích thước chiều ngang để làm thành height 
+    -> height đc tạo ra bởi padding-top*/
+    background: url('/prac1_theBand/assets/img/slider/slider1.jpg') no-repeat top center / cover ;
+    position: relative;
+
+}
+#slider .text-content{
+    position: absolute;
+    bottom: 47px; /* padding .textcontent (32px) + margin-bottom .text-description(15px)   */
+    color: white;
+    text-align: center; /*Đẩy chữ h2 ra giữa*/
+    /*đẩy chữ ra giữa ảnh */
+    left: 50%;  
+    transform: translateX(-50%);/* canh giữa .text-content. Chỉ áp dụng khi áp dụng position */
+    /* or */
+    /* width: 100%; */
+   
+
+
+}
+#slider .text-heading{
+    /* Tinh chỉnh độ dày của chữ  */
+    font-weight: 500;
+    font-size: 24px;
+    
+    
+
+}
+#slider .text-description{
+        font-size: 15px;
+        margin-top: 24px;
+}
+
+/* ABOUT SESSION CSS*/
+
+#content .content-section{
+    width: 800px;
+    /* căn văn bản ra giữa */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 64px 0;
+}
+
+#content .section-heading{
+    margin-top: 10px;
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 4px; /*cho khoảng cách chữ từng chữ cách xa nhau*/
+}
+
+#content .section-sub-heading{
+    font-size: 15px;
+    text-align: center;
+    margin-top: 25px;
+    font-style: italic; /*Tạo kiểu chữ*/
+    opacity: 0.6; /*Tạo độ mờ  (0 -> 1)*/
+}
+ #content .about-text{
+     margin-top: 16px;
+     font-size: 15px;
+     text-align: justify; /*căn đều 2 bên dòng chữ*/
+     line-height:1.4 ; /*chỉnh độ cao 1 dòng. English = 1.4. Vietnamese = 1.6*/
+     
+ }
+
+/* TEAM SECTION CSS */
+/* khi tất cả các member-items dùng "Float" --> menber-list sẽ bị co lại
+--> vì float sẽ tạo ra 1 mặt phẳng khác
+--> cách khắc phục dùng "clear" */
+#content .clear{
+    clear: both;
+}
+#content .member-list{
+    margin-top: 47px;
+}
+.member-img{
+    width: 154px;
+    border-radius: 5px;
+    padding-top: 15px;
+} 
+
+#content .member-items{
+  float: left;
+  /* canh chỉnh k/c 3 hình ảnh = nhau  */
+  width: 33.33333%;
+  text-align: center;
+ 
+}
+
+#content .member-name{
+    font-size: 15px;
+    
+}
+ 
+
+/*TOUR TICKET CSS*/
+#content .tour-section{
+    background-color: black;
+     
+ 
+}
+
+#content .ticket-list{
+    background-color: white;
+    margin-top: 35px;
+    list-style: none;
+}
+
+.ticket-list li{
+    color: #757575;
+    font-size: 15px;
+    padding: 11px 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+.ticket-list .sold-out{
+    background-color: #f44336;
+    color: #fff;
+    padding: 3px 8px;
+    margin-left: 16px;
+} 
+
+.ticket-list .quatity{
+    float: right;
+    width: 24px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    margin-top: -3px;
+}
+
+#footer{
+    
+}
