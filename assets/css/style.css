@@ -21,8 +21,43 @@
 .text-white{
     color: white !important;
 }
+/* ROW- COLUMNS LAYOUT */
+.row{
+    margin-left: -8px;
+    margin-right: -8px;
+}
+/* thay thế cho <div class="clear"></div> */
+.row::after{
+ content: "";
+ display: block;
+ clear: both;
+}
+.col{
+    float: left;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.col-third{
+    width: 33.33333%;
+}
+.col-half{
+    width: 50%;
+}
+.col-full{
+    width: 100%;
+}
+.text-center{
+    text-align: center !important;
+}
+.mt-8{
+    margin-top: 8px !important;
+}
+.mt-16{
+    margin: 16px  0!important;
+}
 /* HEADER CSS */
 html{
+    scroll-behavior: smooth;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -182,7 +217,7 @@ có thuộc tính Css giống nhau -> viết gộp */
     /* căn văn bản ra giữa */
     margin-left: auto;
     margin-right: auto;
-    padding: 64px 0;
+    padding: 64px 0 112px;
 }
 
 #content .section-heading{
@@ -212,7 +247,7 @@ có thuộc tính Css giống nhau -> viết gộp */
 /* khi tất cả các member-items dùng "Float" --> menber-list sẽ bị co lại
 --> vì float sẽ tạo ra 1 mặt phẳng khác
 --> cách khắc phục dùng "clear" */
-#content .clear{
+.clear{
     clear: both;
 }
 #content .member-list{
@@ -224,13 +259,6 @@ có thuộc tính Css giống nhau -> viết gộp */
     padding-top: 15px;
 } 
 
-#content .member-items{
-  float: left;
-  /* canh chỉnh k/c 3 hình ảnh = nhau  */
-  width: 33.33333%;
-  text-align: center;
- 
-}
 
 #content .member-name{
     font-size: 15px;
@@ -275,7 +303,233 @@ có thuộc tính Css giống nhau -> viết gộp */
     line-height: 24px;
     margin-top: -3px;
 }
+/* TOUR PLACE CSS */
 
-#footer{
+.place-list{
+    padding-top: 32px;
+    /* margin-left: -8px;
+    margin-right: -8px; */
+    /* padding-bottom: 32px; */
+
+}
+.place-item{
+    
+    /* float: left; */
+    /* width: 33.33333%; */
+    /* padding: 0 8px; */
+    margin-bottom: 16px;
+}
+.place-img{
+    width: 100%;
+    display: block;
+}
+.place-img:hover{
+    opacity: 0.6;
+}
+.place-body{
+    
+    background-color: #fff;
+    padding: 16px;
+    font-size: 15px;
+}
+.place-heading{
+    font-size: 15px;
+    font-weight: 550;
+}
+.place-time{
+    margin: 15px 0;
+    color: #757575;
+}
+.place-desc{
+    margin-bottom: 15px;
     
 }
+.js-buy-ticket{
+    color: #fff;
+    background-color: #000;
+    border: none;
+    padding: 10.5px 16px;
+    display: inline-block;
+}
+.js-buy-ticket:hover{
+    color: #000;
+    background-color: #ccc;
+}
+
+/* BUY TICKET MODAL */
+.modal{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    /* tạo lớp phủ mờ */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* để modal-container nằm giữa modal */
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+/* để hiện Modal ticket  */
+.modal.open{
+    display: flex;
+}
+.modal-container{
+    background-color: #fff;
+    
+    /* responsive */
+    max-width: calc(100% - 32px);
+    width: 900px ;
+    min-height: 200px;
+    position: relative;
+    /* @keyFrames */
+    animation: modalFadeIn ease 0.5s;
+
+}
+.modal-close{
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #fff;
+    padding: 8px 16px;
+   font-size: 14px;
+   line-height: 36px;
+   
+   opacity: 0.9;
+}
+.modal-close:hover{
+    cursor: pointer;
+    background-color: red;
+    color: snow;
+    opacity: 1.2;
+}
+.modal-header{
+    background-color: #009688;
+    font-size: 30px;
+    color: #fff;
+    height: 130px;
+    letter-spacing: 4px;
+    font-weight: 400;
+    /* canh chỉnh "Ticket" ra giữa màn hình */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.modal-heading-icon{
+    margin-right: 16px;
+}
+.modal-body{
+    padding: 16px;
+}
+.modal-label{
+    display: block;
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+.modal-input{
+    border: 1px solid #ccc;
+    width: 100%;
+    font-size: 15px;
+    padding: 10px;
+    margin-bottom: 25px;
+}
+#buy-ticket{
+    background-color: #009688;
+    border: none;
+    color: white;
+    width: 100%;
+    font-size: 15px;
+    text-transform: uppercase;
+    padding: 16px;
+}
+#buy-ticket:hover{
+    cursor: pointer;
+    opacity: 0.9;
+}
+.modal-footer{
+    padding: 16px;
+    text-align: right;
+    font-size: 15px;
+}
+.modal-footer a{
+    color:#2196F3 ;
+}
+
+/* Meaning: tạo ra div động (như : hoạt họa ) của 1 div tĩnh 
+    giống như transitions, animation của Powerpoint */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform:  translateY(-200px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* CONTACT FORM CSS */
+.contact-content{
+    margin-top: 48px;
+}
+.contact-info{
+    font-size: 18px;
+    line-height: 1.5;
+}
+.contact-info i[class*="ti-"] {
+    width: 30px;
+    display: inline-block;
+}
+.contact-form{
+    font-size: 15px;
+}
+.contact-form .form-control{
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 100%;
+
+}
+.contact-form .form-submit-btn{
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    float: right;
+}
+.contact-form .form-submit-btn:hover{
+    cursor: pointer;
+    background-color: #ccc;
+    color: black;
+}
+
+/* MAP & FOOTER CSS */
+.map-section img{
+    width: 100%;
+    opacity: 0.9;
+}
+#footer {
+    padding: 64px 16px;
+    text-align: center;
+    font-size: 24px;
+
+}
+#footer .social-list{
+    font-size: 24px;
+    
+}
+#footer .social-list a{
+    text-decoration: none;
+    color:rgba(0, 0, 0, 0.6);
+}
+#footer .copyright a,
+#footer .social-list a:hover{
+    color:rgba(32, 11, 11, 0.5);
+}
+#footer .copyright{
+    margin-top: 15px;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 15px;
+}
+
