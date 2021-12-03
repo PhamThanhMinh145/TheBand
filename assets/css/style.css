@@ -179,7 +179,7 @@ có thuộc tính Css giống nhau -> viết gộp */
     padding-top: 50%; /*Meaning: 50% width của chính nó ->
     Lấy 50% kích thước chiều ngang để làm thành height 
     -> height đc tạo ra bởi padding-top*/
-    background: url('/prac1_theBand/assets/img/slider/slider1.jpg') no-repeat top center / cover ;
+    background: url('./assets/img/slider/slider1.jpg') no-repeat top center / cover ;
     position: relative;
 
 }
